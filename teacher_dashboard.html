@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; background-color: #f5f5f5; }
+        .container { width: 50%; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px #ccc; margin-top: 20px; }
+        h1 { color: #34A853; }
+        input, button { padding: 10px; margin: 10px 0; width: 80%; border-radius: 5px; border: 1px solid #ccc; }
+        .btn { background: #34A853; color: white; border: none; cursor: pointer; padding: 10px 20px; }
+        .btn:hover { background: #2c8c41; }
+        .file-list { list-style: none; padding: 0; margin-top: 20px; }
+        .file-list li { background: #e7e7e7; padding: 10px; margin: 5px 0; border-radius: 5px; }
+        .nav { margin-bottom: 20px; }
+        .nav a { text-decoration: none; margin: 10px; padding: 10px 15px; background: #34A853; color: white; border-radius: 5px; }
+        .nav a:hover { background: #2c8c41; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>📚 Teacher Dashboard</h1>
+        
+        <!-- Navigation Menu -->
+        <div class="nav">
+            <a href="index.html">🏠 Home</a>
+            <a href="upload.html">📤 Student Upload</a>
+            <a href="teacher_dashboard.html">📚 Teacher Dashboard</a>
+        </div>
+
+        <p>Upload and share materials with your students.</p>
+
+        <!-- Upload Form -->
+        <form action="upload_material.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="fileToUpload" required>
+            <button type="submit" class="btn">Upload Material</button>
+        </form>
+
+        <!-- Display Uploaded Files -->
+        <div class="materials">
+            <h2>📂 Uploaded Materials</h2>
+            <ul class="file-list">
+                <?php
+                $files = scandir("materials/");
+                foreach ($files as $file) {
+                    if ($file !== "." && $file !== "..") {
+                        echo "<li><a href='materials/$file' target='_blank'>$file</a></li>";
+                    }
+                }
+                ?>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
