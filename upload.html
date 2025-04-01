@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Your Work</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #dff9fb;
+            text-align: center;
+        }
+        header {
+            background-color: #130f40;
+            color: white;
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .container {
+            padding: 50px;
+        }
+        h1 {
+            color: #130f40;
+            font-size: 35px;
+        }
+        p {
+            color: #333;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 20px auto;
+            line-height: 1.5;
+        }
+        input[type="file"], input[type="submit"] {
+            padding: 10px;
+            border: 2px solid #130f40;
+            border-radius: 5px;
+            width: 50%;
+            margin-top: 10px;
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            background-color: #c0392b;
+        }
+        footer {
+            background-color: #130f40;
+            color: white;
+            padding: 15px;
+            margin-top: 30px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        Upload Your Digital Work
+    </header>
+
+    <div class="container">
+        <h1>Submit Your Work</h1>
+        <p>Please upload your digital storytelling, blog, or any other creative work here.</p>
+        
+        <!-- File Upload Form -->
+        <form action="upload.php" method="post" enctype="multipart/form-data">
+            <input type="file" name="fileToUpload" required>
+            <br>
+            <input type="submit" value="Upload File">
+        </form>
+
+        <br>
+        <a href="index.html" class="btn">Back to Home</a>
+    </div>
+
+    <footer>
+        © 2025 My Website | All Rights Reserved
+    </footer>
+
+</body>
+</html>
