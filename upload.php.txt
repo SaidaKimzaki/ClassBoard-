@@ -1,0 +1,38 @@
+<?php
+$targetDir = "uploads"; // Folder where files will be stored
+$targetFile = $targetDir . basename($_FILES["fileToUpload"]["name"]);
+$uploadOk = 1;
+$fileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+// Check if file already exists
+if (file_exists($targetFile)) {
+    echo "Sorry, file already exists.";
+    $uploadOk = 0;
+}
+
+// Check file size (limit: 5MB)
+if ($_FILES["fileToUpload"]["size"] > 5000000) {
+    echo "Sorry, your file is too large.";
+    $uploadOk = 0;
+}
+
+// Allow only certain file formats
+$allowedTypes = ["jpg", "png", "pdf", "mp4", "mp3", "docx"];
+if (!in_array($fileType, $allowedTypes)) {
+    echo "Sorry, only JPG, PNG, PDF, MP4, MP3, and DOCX files are allowed.";
+    $uploadOk = 0;
+}
+
+// If everything is OK, move the file to the uploads folder
+if ($uploadOk == 1) {
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true); // Create uploads/ folder if it doesn't exist
+    }
+
+    if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $targetFile)) {
+        echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
+    } else {
+        echo "Sorry, there was an error uploading your file.";
+    }
+}
+?>
